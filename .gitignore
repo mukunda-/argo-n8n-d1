@@ -1,0 +1,26 @@
+# Helm
+*.tgz
+charts/*/charts/
+.helm/
+
+# Secrets (never commit secrets!)
+*secret*.yaml
+*secrets*.yaml
+
+# Environment-specific (if not using GitOps)
+# environments/production/*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.tmp
+*.log
