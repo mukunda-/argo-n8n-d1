@@ -1,0 +1,77 @@
+# Custom values for n8n deployment
+# Override the default values in application.yaml by editing this file
+
+# n8n Configuration
+config:
+  executions:
+    mode: queue
+    timeout: 300
+    maxTimeout: 3600
+  
+  # Database configuration (optional - uses SQLite by default)
+  # database:
+  #   type: postgresdb
+  #   postgresdb:
+  #     host: postgres.default.svc.cluster.local
+  #     port: 5432
+  #     database: n8n
+  #     user: n8n
+  #     password: changeme
+
+# Encryption key for credentials (generate with: openssl rand -base64 32)
+# secret:
+#   encryption_key: ""
+
+# Persistence
+persistence:
+  enabled: true
+  type: dynamic
+  # storageClass: ""
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+
+# Service configuration
+service:
+  type: ClusterIP
+  port: 5678
+
+# Ingress
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # cert-manager.io/cluster-issuer: letsencrypt-prod
+    # nginx.ingress.kubernetes.io/proxy-body-size: 50m
+  hosts:
+    - host: n8n.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+    # - secretName: n8n-tls
+    #   hosts:
+    #     - n8n.example.com
+
+# Resources
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "500m"
+  limits:
+    memory: "1Gi"
+    cpu: "1000m"
+
+# Scaling
+replicaCount: 1
+
+# Additional environment variables
+# extraEnv:
+#   - name: N8N_BASIC_AUTH_ACTIVE
+#     value: "true"
+#   - name: N8N_BASIC_AUTH_USER
+#     value: "admin"
+#   - name: N8N_BASIC_AUTH_PASSWORD
+#     value: "changeme"
+#   - name: WEBHOOK_URL
+#     value: "https://n8n.example.com/"
