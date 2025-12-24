@@ -2,6 +2,8 @@ cluster:
   roles:
     - name: n8n
       ensure: present
+      passwordSecret:
+        - name: cnpg-cluster-n8n
 
 databases:
   - name: n8n
