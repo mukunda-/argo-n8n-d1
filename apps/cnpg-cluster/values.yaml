@@ -1,6 +1,6 @@
-# cluster:
-#   initdb:
-#     database: n8n
-#     owner: n8n
-#     secret:
-#       name: dbpass-n8n
+cluster:
+  initdb:
+    database: n8n
+    owner: n8n
+    secret:
+      name: dbpass-n8n
