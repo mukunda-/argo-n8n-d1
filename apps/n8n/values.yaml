@@ -1,5 +1,3 @@
-# Custom values for n8n deployment
-# Override the default values in application.yaml by editing this file
 
 # n8n Configuration
 config:
@@ -9,14 +7,14 @@ config:
     maxTimeout: 3600
   
   # Database configuration (optional - uses SQLite by default)
-  # database:
-  #   type: postgresdb
-  #   postgresdb:
-  #     host: postgres.default.svc.cluster.local
-  #     port: 5432
-  #     database: n8n
-  #     user: n8n
-  #     password: changeme
+  database:
+    type: postgresdb
+    postgresdb:
+      host: cluster-rw.cpng.svc
+      port: 5432
+      database: n8n
+      user: n8n
+      password: changeme
 
 # Encryption key for credentials (generate with: openssl rand -base64 32)
 # secret:

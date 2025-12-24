@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg-cluster
+  namespace: argocd
+  labels:
+    managed-by: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  sources:
+  - repoURL: https://cloudnative-pg.github.io/charts
+    chart: cluster
+    targetRevision: 0.5.0
+    helm:
+      releaseName: cnpg-cluster
+      valuesFile:
+        - $home/apps/cnpg-cluster/values.yaml
+  - repoURL: https://github.com/mukunda-/argo-n8n-d1
+    ref: home
+  
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cnpg
+  
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
