@@ -22,15 +22,15 @@ argo-pass:
 delete-argo-pass:
 	kubectl -n argocd delete secret argocd-initial-admin-secret
 
-# Port forward to Argo CD UI. This opens localhost:8080 to the Argo UI.
+# Port forward to Argo CD UI. This opens localhost:8101 to the Argo UI.
 argo-forward:
-	kubectl port-forward svc/argocd-server -n argocd 8080:443
+	kubectl port-forward svc/argocd-server -n argocd 8101:443
 
 argo-install-cli-brew:
 	brew install argocd
 
 argo-cli-login:
-	argocd login localhost:8080 --username admin --password $(shell make argo-pass)
+	argocd login localhost:8101 --username admin --password $(shell make argo-pass)
 
 # Sync all applications
 argo-sync:
@@ -44,3 +44,5 @@ argo-create-cnpg-cluster:
 argo-create-n8n:
 	argocd app create n8n --file ./apps/n8n/application.yaml
 
+connect-pg:
+	./connect-pg.sh

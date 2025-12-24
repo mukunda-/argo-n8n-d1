@@ -5,17 +5,20 @@ metadata:
   namespace: argocd
   labels:
     managed-by: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   project: default
-  source:
-    repoURL: 8gears.container-registry.com/library
-    chart: n8n
-    targetRevision: 1.0.4
-    helm:
-      releaseName: n8n
-      valueFiles:
-        - values.yaml
+  sources:
+    - repoURL: 8gears.container-registry.com/library
+      chart: n8n
+      targetRevision: 1.0.4
+      helm:
+        releaseName: n8n
+        valueFiles:
+          - values.yaml
   
+    
   destination:
     server: https://kubernetes.default.svc
     namespace: n8n
