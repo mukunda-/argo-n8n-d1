@@ -1,7 +1,6 @@
-cluster:
-  bootstrap:
-    initdb:
-      database: n8n
-      owner: n8n
-      secret:
-        name: dbpass-n8n
+
+
+databases:
+  - name: n8n
+    ensure: present
+    owner: n8n
