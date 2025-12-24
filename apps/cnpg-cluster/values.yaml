@@ -1,7 +1,7 @@
 cluster:
   roles:
     - name: n8n
-    ensure: present
+      ensure: present
 
 databases:
   - name: n8n
