@@ -42,7 +42,10 @@ argo-create-cnpg-cluster:
 	argocd app create cnpg-cluster --file ./apps/cnpg-cluster/app.yaml
 
 argo-create-n8n:
-	argocd app create n8n --file ./apps/n8n/application.yaml
+	argocd app create n8n --file ./apps/n8n/app.yaml
 
 connect-pg:
 	./connect-pg.sh
+
+n8n-forward:
+	kubectl port-forward svc/n8n -n n8n 5678:5678
