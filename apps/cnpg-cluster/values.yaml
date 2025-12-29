@@ -2,8 +2,13 @@ cluster:
   roles:
     - name: n8n
       ensure: present
+    - name: n8n2
+      ensure: present
       
 databases:
   - name: n8n
     ensure: present
     owner: n8n
+  - name: n8n2
+    ensure: present
+    owner: n8n2
