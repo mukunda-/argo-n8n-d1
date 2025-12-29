@@ -10,14 +10,15 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: 8gears.container-registry.com/library
-      chart: n8n
-      targetRevision: 1.0.4
-      helm:
-        releaseName: n8n
-        valueFiles:
-          - values.yaml
-  
+  - repoURL: 8gears.container-registry.com/library
+    chart: n8n
+    targetRevision: 1.0.4
+    helm:
+      releaseName: n8n
+      valueFiles:
+        - $home/apps/n8n/values.yaml
+  - repoURL: https://github.com/mukunda-/argo-n8n-d1
+    ref: home
     
   destination:
     server: https://kubernetes.default.svc

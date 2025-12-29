@@ -1,38 +1,34 @@
 
-# n8n Configuration
-config:
-  executions:
-    mode: queue
-    timeout: 300
-    maxTimeout: 3600
-  
-  # Database configuration (optional - uses SQLite by default)
-  database:
-    type: postgresdb
-    postgresdb:
-      host: cluster-rw.cpng.svc
-      port: 5432
-      database: n8n
-      user: n8n
-      password: changeme
+main:
+  # n8n Configuration
+  config:
+    executions:
+      mode: queue
+      timeout: 300
+      maxTimeout: 3600
+    
+    # Database configuration (optional - uses SQLite by default)
+    database:
+      type: postgresdb
+      postgresdb:
+        host: cluster-rw.cpng.svc
+        port: 5432
+        database: n8n
+        user: n8n
 
-# Encryption key for credentials (generate with: openssl rand -base64 32)
-# secret:
-#   encryption_key: ""
+  # Persistence
+  persistence:
+    enabled: true
+    type: dynamic
+    size: 1Gi
 
-# Persistence
-persistence:
-  enabled: true
-  type: dynamic
-  # storageClass: ""
-  accessModes:
-    - ReadWriteOnce
-  size: 10Gi
-
-# Service configuration
-service:
-  type: ClusterIP
-  port: 5678
+worker:
+  # Service configuration
+  service:
+    type: ClusterIP
+    port: 5678
+  # Desired worker pods.
+  replicaCount: 1
 
 # Ingress
 ingress:
@@ -51,17 +47,14 @@ ingress:
     #   hosts:
     #     - n8n.example.com
 
-# Resources
-resources:
-  requests:
-    memory: "512Mi"
-    cpu: "500m"
-  limits:
-    memory: "1Gi"
-    cpu: "1000m"
-
-# Scaling
-replicaCount: 1
+# Resources (TODO)
+# resources:
+#   requests:
+#     memory: "512Mi"
+#     cpu: "500m"
+#   limits:
+#     memory: "1Gi"
+#     cpu: "1000m"
 
 # Additional environment variables
 # extraEnv:
@@ -73,3 +66,10 @@ replicaCount: 1
 #     value: "changeme"
 #   - name: WEBHOOK_URL
 #     value: "https://n8n.example.com/"
+
+extraEnv:
+  DB_POSTGRESDB_PASSWORD:
+    valueFrom:
+      secretKeyRef:
+        name: n8n-db-password
+        key: password
