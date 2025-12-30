@@ -1,4 +1,8 @@
 
+# TODO: add image block
+#image:
+
+
 main:
   # n8n Configuration
   config:
@@ -73,3 +77,53 @@ extraEnv:
       secretKeyRef:
         name: n8n-db-password
         key: password
+  GENERIC_TIMEZONE:
+    value: "America/Chicago"
+
+  N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS:
+    value: "true"
+  N8N_PORT:
+    value: "5678"
+
+  N8N_RUNNERS_ENABLED:
+    value: "true"
+  N8N_RUNNERS_MODE:
+    value: "internal"
+  N8N_RUNNERS_AUTH_TOKEN:
+    value: "temp_for_testing"
+  N8N_RUNNERS_BROKER_LISTEN_ADDRESS:
+    value: "0.0.0.0"
+  N8N_EXECUTIONS_PROCESS:
+    value: "false"
+
+
+  # try NOT setting these but setting it on the workers
+  # TODO: i'm pretty sure only one of these is respected...
+  # N8N_EXECUTIONS_MODE:
+  #   value: "queue"
+  # EXECUTIONS_MODE:
+  #   value: "queue"
+
+  N8N_LOG_LEVEL:
+    value: "debug"
+
+  N8N_HOST:
+    value: "localhost"
+  N8N_EDITOR_BASE_URL:
+    value: "https://n8n-test.mukunda.com"
+  VUE_APP_URL_BASE_API:
+    value: "https://n8n-test.mukunda.com/"
+
+  WEBHOOK_URL:
+    value: "https://n8n-test.mukunda.com"
+
+  N8N_METRICS:
+    value: "true"
+
+  N8N_LISTEN_ADDRESS:
+    value: "0.0.0.0"
+  N8N_SECURE_COOKIE:
+    value: "false"
+
+  NODE_FUNCTION_ALLOW_EXTERNAL:
+    value: "date-fns"
