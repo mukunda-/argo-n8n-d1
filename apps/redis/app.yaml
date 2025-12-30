@@ -12,11 +12,23 @@ spec:
   sources:
   - repoURL: https://charts.bitnami.com/bitnami
     chart: redis
-    targetRevision: 24.1.0
+    targetRevision: 20.5.0
     helm:
       releaseName: redis
-      valueFiles:
-        - $home/apps/redis/values.yaml
+      values: |
+        architecture: standalone
+        auth:
+          enabled: true
+          existingSecret: redis-password
+          existingSecretPasswordKey: password
+        master:
+          persistence:
+            enabled: true
+            size: 4Gi
+        image:
+          registry: docker.io
+          repository: bitnamilegacy/redis
+          tag: 7.2.4-debian-12-r9
   - repoURL: https://github.com/mukunda-/argo-n8n-d1
     ref: home
   
