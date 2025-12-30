@@ -41,6 +41,9 @@ argo-create-cnpg:
 argo-create-cnpg-cluster:
 	argocd app create cnpg-cluster --file ./apps/cnpg-cluster/app.yaml
 
+argo-create-redis:
+	argocd app create redis --file ./apps/redis/app.yaml
+
 argo-create-n8n:
 	argocd app create n8n --file ./apps/n8n/app.yaml
 

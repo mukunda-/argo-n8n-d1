@@ -1,0 +1,8 @@
+architecture: standalone
+auth:
+  enabled: true
+  password: "your-secure-password"
+master:
+  persistence:
+    enabled: true
+    size: 2Gi
