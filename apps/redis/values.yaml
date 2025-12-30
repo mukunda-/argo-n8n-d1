@@ -10,3 +10,7 @@ master:
 image:
   repository: bitnamilegacy/redis
   tag: 7.2.4-debian-12-r9
+security:
+  allowInsecureImages: true
+  # todo: maybe we should look for alternatives to bitnami/redis if
+  # it is no longer supported for free

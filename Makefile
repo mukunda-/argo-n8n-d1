@@ -11,8 +11,8 @@ install-argo:
 	@echo "Waiting for Argo CD to be ready..."
 	kubectl wait --for=condition=available --timeout=300s deployment/argocd-server -n argocd
 	@echo "Argo CD installed successfully!"
-	@echo "Get the admin password with: make argo-pass
-	@echo "Port forward with: make argo-forward
+	@echo "Get the admin password with: make argo-pass"
+	@echo "Port forward with: make argo-forward"
 
 # Retrieve the initial argo admin password. Argo recommends deleting this secret after the
 # initial login.
