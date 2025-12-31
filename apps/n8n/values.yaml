@@ -127,3 +127,10 @@ extraEnv:
 
   NODE_FUNCTION_ALLOW_EXTERNAL:
     value: "date-fns"
+
+  QUEUE_BULL_REDIS_TLS:
+    value: "false"
+  QUEUE_BULL_REDIS_HOST:
+    value: "redis-master.redis.svc"
+  QUEUE_BULL_REDIS_PORT:
+    value: "6379"

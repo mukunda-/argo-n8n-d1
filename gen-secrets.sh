@@ -21,6 +21,8 @@ if ! kubectl get namespace redis &>/dev/null; then
     kubectl create namespace redis || true
 fi
 
+# Redis password is not used currently. This can be added later for security hardening,
+# but otherwise is safe within the cluster if there are no misbehaving nodes.
 echo Adding redis-password to redis namespace
 kubectl create secret generic -n redis redis-password --from-literal=password=$redis_password
 echo Adding redis-password to n8n namespace
