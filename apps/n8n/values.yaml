@@ -1,7 +1,9 @@
 
 # TODO: add image block
-#image:
-
+image:
+  repository: bitovi/n8n-community-nodes
+  pullPolicy: Always
+  tag: "1.122.4"
 
 main:
   # n8n Configuration
