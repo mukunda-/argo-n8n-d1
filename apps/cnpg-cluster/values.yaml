@@ -6,7 +6,7 @@ cluster:
         name: n8n-db-password
         key: password
       
-# databases:
-#   - name: n8n
-#     ensure: present
-#     owner: n8n
+databases:
+  - name: n8n
+    ensure: present
+    owner: n8n
