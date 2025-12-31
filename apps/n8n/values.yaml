@@ -11,8 +11,8 @@ main:
       timeout: 300
       maxTimeout: 3600
     
-    # Database configuration (optional - uses SQLite by default)
-    database:
+    # Database configuration
+    db:
       type: postgresdb
       postgresdb:
         host: cluster-rw.cpng.svc
