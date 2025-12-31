@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mukundajohnson/argo-n8n-d1
+    repoURL: https://github.com/mukunda-/argo-n8n-d1
     targetRevision: HEAD
     path: apps/busybox/manifests
   destination:
