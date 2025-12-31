@@ -17,7 +17,7 @@ main:
     db:
       type: postgresdb
       postgresdb:
-        host: cluster-rw.cpng.svc
+        host: cnpg-cluster-rw.cnpg.svc
         port: 5432
         database: n8n
         user: n8n
