@@ -1,8 +1,8 @@
 # Makefile for Argo CD Project
 
-.PHONY: install-argo argo-pass delete-argo-pass argo-forward 
-.PHONY: argo-install-cli-brew argo-cli-login argo-sync
-.PHONY: argo-create-cnpg argo-create-cnpg-cluster argo-create-n8n
+.PHONY: install-argo get-argo-password delete-argo-password argo-forward 
+.PHONY: install-argo-cli argo-cli-login argo-sync
+.PHONY: create-argo-apps connect-pg n8n-forward
 
 # Install Argo
 install-argo:
