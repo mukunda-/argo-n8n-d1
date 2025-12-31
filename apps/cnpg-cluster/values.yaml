@@ -4,7 +4,6 @@ cluster:
       ensure: present
       passwordSecret:
         name: n8n-db-password
-        key: password
       
 databases:
   - name: n8n
