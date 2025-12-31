@@ -47,6 +47,9 @@ argo-create-redis:
 argo-create-n8n:
 	argocd app create n8n --file ./apps/n8n/app.yaml
 
+argo-create-root-app:
+	argocd app create root-app --file ./root-app.yaml
+
 connect-pg:
 	./connect-pg.sh
 
