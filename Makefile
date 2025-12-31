@@ -4,6 +4,9 @@
 .PHONY: install-argo-cli argo-cli-login argo-sync
 .PHONY: create-argo-apps connect-pg n8n-forward
 
+fresh:
+	./fresh.sh
+
 # Install Argo
 install-argo:
 	kubectl create namespace argocd || true
@@ -30,9 +33,10 @@ argo-forward:
 install-argo-cli:
 	brew install argocd
 
-# Log into the argo instance. Needs argo-forward first.
+# Log into the argo instance. Needs argo-forward first. This also uses --insecure,
+# ignoring certificate validation.
 argo-cli-login:
-	argocd login localhost:8101 --username admin --password $(shell make get-argo-password)
+	argocd login localhost:8101 --username admin --password $(shell make get-argo-password) --insecure
 
 # Sync all applications
 argo-sync:
