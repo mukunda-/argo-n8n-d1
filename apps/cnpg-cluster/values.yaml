@@ -1,10 +1,10 @@
-# cluster:
-#   roles:
-#     - name: n8n
-#       ensure: present
-#       passwordSecret:
-#         name: n8n-db-password
-#         key: password
+cluster:
+  roles:
+    - name: n8n
+      ensure: present
+      passwordSecret:
+        name: n8n-db-password
+        key: password
       
 # databases:
 #   - name: n8n
