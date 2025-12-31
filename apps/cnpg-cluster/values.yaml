@@ -2,6 +2,7 @@ cluster:
   roles:
     - name: n8n
       ensure: present
+      login: true
       passwordSecret:
         name: n8n-db-password
       

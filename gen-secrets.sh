@@ -11,9 +11,13 @@ if ! kubectl get namespace n8n &>/dev/null; then
 fi
 
 echo Adding n8n-db-password to cnpg namespace
-kubectl create secret generic -n cnpg n8n-db-password --from-literal=password=$n8n_db_password
+kubectl create secret generic -n cnpg n8n-db-password \
+    --from-literal=username=n8n \
+    --from-literal=password=$n8n_db_password
 echo Adding n8n-db-password to n8n namespace
-kubectl create secret generic -n n8n n8n-db-password --from-literal=password=$n8n_db_password
+kubectl create secret generic -n n8n n8n-db-password \
+    --from-literal=username=n8n \
+    --from-literal=password=$n8n_db_password
 
 redis_password=$(openssl rand -hex 32)
 
