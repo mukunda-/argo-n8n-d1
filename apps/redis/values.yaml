@@ -11,5 +11,4 @@ image:
 global:
   security:
     allowInsecureImages: true
-    # todo: maybe we should look for alternatives to bitnami/redis if
-    # it is no longer supported for free
+    # TODO: We should look for a supported redis alternative.

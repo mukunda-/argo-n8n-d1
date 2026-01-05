@@ -1,12 +1,26 @@
+# Two ways to init a cluster. One is through the initdb. This is more geared towards if
+# you have a single purpose for a cluster.
+#
+# Another is through the managed roles/databases, where you have multiple roles created
+# for different purposes. NOTE that I've observed major deployment delays when using the
+# managed roles and databases (having to wait several minutes for the settings to take
+# effect).
+
 cluster:
-  roles:
-    - name: n8n
-      ensure: present
-      login: true
-      passwordSecret:
-        name: n8n-db-password
-      
-databases:
-  - name: n8n
-    ensure: present
-    owner: n8n
+  initdb:
+    database: n8n
+    secret:
+      name: n8n-db-password
+    encoding: UTF8
+
+# cluster:
+#   roles:
+#     - name: n8n
+#       ensure: present
+#       login: true
+#       passwordSecret:
+#         name: n8n-db-password    
+# databases:
+#   - name: n8n
+#     ensure: present
+#     owner: n8n

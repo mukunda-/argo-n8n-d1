@@ -146,6 +146,12 @@ worker:
       value: "redis-master.redis.svc"
     QUEUE_BULL_REDIS_PORT:
       value: "6379"
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 20
+    targetCPUUtilizationPercentage: 80
+    # targetMemoryUtilizationPercentage: 80
 
 # Ingress
 ingress:
