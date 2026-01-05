@@ -1,5 +1,4 @@
 
-# TODO: add image block
 image:
   repository: bitovi/n8n-community-nodes
   pullPolicy: Always
@@ -7,7 +6,7 @@ image:
 
 main:
   # n8n Configuration
-  config:
+  config: &commonConfig
     executions:
       mode: queue
       timeout: 300
@@ -98,6 +97,8 @@ worker:
   service:
     type: ClusterIP
     port: 5678
+
+  config: *commonConfig
 
   extraEnv:
     DB_POSTGRESDB_PASSWORD:
