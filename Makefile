@@ -50,4 +50,4 @@ connect-pg:
 
 # Open port to N8n instance.
 n8n-forward:
-	kubectl port-forward svc/n8n -n n8n 5678:5678
+	kubectl port-forward svc/n8n -n n8n 5678:80

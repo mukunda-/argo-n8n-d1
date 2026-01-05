@@ -97,8 +97,6 @@ worker:
   service:
     type: ClusterIP
     port: 5678
-  # Desired worker pods.
-  replicaCount: 1
 
   extraEnv:
     DB_POSTGRESDB_PASSWORD:
@@ -146,6 +144,10 @@ worker:
       value: "redis-master.redis.svc"
     QUEUE_BULL_REDIS_PORT:
       value: "6379"
+  
+  # Desired worker pods. This is only used if autoscaling is disabled
+  replicaCount: 3
+
   autoscaling:
     enabled: false
     minReplicas: 1
