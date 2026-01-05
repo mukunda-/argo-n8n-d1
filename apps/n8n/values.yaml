@@ -93,6 +93,7 @@ main:
     size: 1Gi
 
 worker:
+  enabled: true
   # Service configuration
   service:
     type: ClusterIP
