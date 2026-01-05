@@ -146,6 +146,8 @@ worker:
       value: "redis-master.redis.svc"
     QUEUE_BULL_REDIS_PORT:
       value: "6379"
+    QUEUE_HEALTH_CHECK_ACTIVE:
+      value: "true"
   
   # Desired worker pods. This is only used if autoscaling is disabled
   replicaCount: 3
