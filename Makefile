@@ -42,8 +42,8 @@ argo-cli-login:
 argo-sync:
 	argocd app sync -l managed-by=argocd
 
-create-argo-apps:
-	argocd app create root-app --file ./root-app.yaml
+create-argo-apps-local:
+	argocd app create root-app --file ./root-app-local.yaml
 
 connect-pg:
 	./connect-pg.sh
