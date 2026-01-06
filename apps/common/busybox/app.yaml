@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/mukunda-/argo-n8n-d1
     targetRevision: HEAD
-    path: apps/busybox/manifests
+    path: apps/common/busybox/manifests
   destination:
     server: https://kubernetes.default.svc
     namespace: busybox
