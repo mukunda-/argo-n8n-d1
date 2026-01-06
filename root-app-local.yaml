@@ -7,15 +7,19 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://github.com/mukunda-/argo-n8n-d1
-    path: apps
-    targetRevision: HEAD
-    directory:
-      recurse: true
-      include:
-      - 'common/*/app.yaml'
-      - 'local/*/app.yaml'
+  sources:
+    - repoURL: https://github.com/mukunda-/argo-n8n-d1
+      path: apps/common
+      targetRevision: HEAD
+      directory:
+        recurse: true
+        include: '*/app.yaml'
+    - repoURL: https://github.com/mukunda-/argo-n8n-d1
+      path: apps/local
+      targetRevision: HEAD
+      directory:
+        recurse: true
+        include: '*/app.yaml'
 
   destination:
     server: https://kubernetes.default.svc
