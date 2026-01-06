@@ -16,7 +16,7 @@ spec:
     helm:
       releaseName: cnpg-cluster
       valueFiles:
-        - $home/apps/cnpg-cluster/values.yaml
+        - $home/apps/common/cnpg-cluster/values.yaml
   - repoURL: https://github.com/mukunda-/argo-n8n-d1
     ref: home
   

@@ -16,7 +16,7 @@ spec:
     helm:
       releaseName: n8n
       valueFiles:
-        - $home/apps/n8n/values.yaml
+        - $home/apps/common/n8n/values.yaml
   - repoURL: https://github.com/mukunda-/argo-n8n-d1
     ref: home
     

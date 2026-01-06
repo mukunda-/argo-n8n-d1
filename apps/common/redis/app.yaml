@@ -16,7 +16,7 @@ spec:
     helm:
       releaseName: redis
       valueFiles:
-        - $home/apps/redis/values.yaml
+        - $home/apps/common/redis/values.yaml
   - repoURL: https://github.com/mukunda-/argo-n8n-d1
     ref: home
   
