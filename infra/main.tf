@@ -19,8 +19,8 @@ module "vpc" {
   public_subnets  = ["10.6.101.0/24", "10.6.102.0/24", "10.6.103.0/24"]
 
   enable_nat_gateway     = true
-  single_nat_gateway     = true   # cheaper (not full NAT HA)
-  one_nat_gateway_per_az = false  # set true if you want NAT HA
+  single_nat_gateway     = true  # cheaper (not full NAT HA)
+  one_nat_gateway_per_az = false # set true if you want NAT HA
 
   enable_dns_hostnames = true
   enable_dns_support   = true
@@ -54,10 +54,10 @@ module "eks" {
 
   # EKS-managed add-ons (good default)
   cluster_addons = {
-    coredns                = {}
-    kube-proxy             = {}
-    vpc-cni                = {}
-    aws-ebs-csi-driver      = {}
+    coredns            = {}
+    kube-proxy         = {}
+    vpc-cni            = {}
+    aws-ebs-csi-driver = {}
   }
 
   # Managed node group: 3 nodes across 3 AZ subnets
@@ -78,6 +78,27 @@ module "eks" {
       update_config = {
         max_unavailable = 1
       }
+    }
+  }
+
+  tags = {
+    Project = var.cluster_name
+  }
+}
+
+# IAM role for AWS Load Balancer Controller
+module "aws_load_balancer_controller_irsa_role" {
+  source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
+  version = "~> 5.0"
+
+  role_name = "${var.cluster_name}-aws-load-balancer-controller"
+
+  attach_load_balancer_controller_policy = true
+
+  oidc_providers = {
+    ex = {
+      provider_arn               = module.eks.oidc_provider_arn
+      namespace_service_accounts = ["kube-system:aws-load-balancer-controller"]
     }
   }
 

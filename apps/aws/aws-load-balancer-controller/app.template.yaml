@@ -13,10 +13,12 @@ spec:
     targetRevision: 1.8.1
     helm:
       releaseName: aws-load-balancer-controller
-      valueFiles:
-        $home/aws/aws-load-balancer-controller/values.yaml
-  - repoURL: https://github.com/mukunda-/argo-n8n-d1
-    ref: home
+      values:
+        clusterName: ${CLUSTER_NAME}
+        serviceAccount:
+          create: true
+          annotations:
+            eks.amazonaws.com/role-arn: ${AWS_LBC_ROLE_ARN}
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system

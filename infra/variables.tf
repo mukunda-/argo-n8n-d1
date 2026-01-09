@@ -3,6 +3,8 @@ variable "region" {
   default = "us-east-1"
 }
 
+# What to call the cluster. This is also attached as the "Project" tag for relevant
+# resources.
 variable "cluster_name" {
   type    = string
   default = "k8s-n8n"
@@ -21,6 +23,6 @@ variable "node_instance_type" {
 
 variable "local_test" {
   description = "Use LocalStack endpoints"
-  type = bool
-  default = false 
+  type        = bool
+  default     = false
 }

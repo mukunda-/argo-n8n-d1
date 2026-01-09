@@ -60,12 +60,12 @@ main:
     N8N_HOST:
       value: "localhost"
     N8N_EDITOR_BASE_URL:
-      value: "https://n8n-test.mukunda.com"
+      value: "https://test-n8n.bitovi-ai.com"
     VUE_APP_URL_BASE_API:
-      value: "https://n8n-test.mukunda.com/"
+      value: "https://test-n8n.bitovi-ai.com/"
 
     WEBHOOK_URL:
-      value: "https://n8n-test.mukunda.com"
+      value: "https://test-n8n.bitovi-ai.com"
 
     N8N_METRICS:
       value: "true"
@@ -127,11 +127,11 @@ worker:
     N8N_HOST:
       value: "localhost"
     N8N_EDITOR_BASE_URL:
-      value: "https://n8n-test.mukunda.com"
+      value: "https://test-n8n.bitovi-ai.com"
     VUE_APP_URL_BASE_API:
-      value: "https://n8n-test.mukunda.com/"
+      value: "https://test-n8n.bitovi-ai.com/"
     WEBHOOK_URL:
-      value: "https://n8n-test.mukunda.com"
+      value: "https://test-n8n.bitovi-ai.com"
     N8N_METRICS:
       value: "true"
     N8N_LISTEN_ADDRESS:
