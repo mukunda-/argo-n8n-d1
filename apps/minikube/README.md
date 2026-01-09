@@ -1,0 +1,1 @@
+Apps that should be installed when running in a local minikube environment.

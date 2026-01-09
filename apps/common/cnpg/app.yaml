@@ -15,8 +15,6 @@ spec:
     targetRevision: 0.27.0
     helm:
       releaseName: cnpg
-      valueFiles:
-        - values.yaml
   
   destination:
     server: https://kubernetes.default.svc

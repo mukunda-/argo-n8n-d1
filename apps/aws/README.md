@@ -1,0 +1,1 @@
+Apps that should be installed when using AWS.
