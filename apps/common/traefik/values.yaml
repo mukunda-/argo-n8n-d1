@@ -1,0 +1,43 @@
+# Traefik common configuration for all environments
+# Provides ingress controller and API gateway capabilities
+
+# Enable dashboard for monitoring
+ingressRoute:
+  dashboard:
+    enabled: true
+    matchRule: Host(`traefik.localhost`)
+    entryPoints:
+      - web
+
+# Enable Kubernetes Gateway API provider
+providers:
+  kubernetesGateway:
+    enabled: true
+
+# Gateway configuration
+gateway:
+  listeners:
+    web:
+      namespacePolicy:
+        from: All
+    websecure:
+      namespacePolicy:
+        from: All
+
+# Service configuration
+service:
+  type: LoadBalancer
+
+# Resource limits
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+
+# Enable access logs for observability
+logs:
+  access:
+    enabled: true
