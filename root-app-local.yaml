@@ -9,17 +9,11 @@ spec:
   project: default
   sources:
     - repoURL: https://github.com/mukunda-/argo-n8n-d1
-      path: apps/common
+      path: apps
       targetRevision: HEAD
       directory:
         recurse: true
-        include: '*/app.yaml'
-    - repoURL: https://github.com/mukunda-/argo-n8n-d1
-      path: apps/minikube
-      targetRevision: HEAD
-      directory:
-        recurse: true
-        include: '*/app.yaml'
+        include: '{common/*/app.yaml,minikube/*/app.yaml}'
 
   destination:
     server: https://kubernetes.default.svc

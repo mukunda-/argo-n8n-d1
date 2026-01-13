@@ -38,6 +38,11 @@ install-argo-cli:
 argo-cli-login:
 	argocd login localhost:8101 --username admin --password $(shell make get-argo-password) --insecure
 
+# Log in via core. Does not need API server exposed and uses the current k8s context
+# directly.
+argo-cli-login-core:
+	argocd login --core
+
 # Sync all applications
 argo-sync:
 	argocd app sync -l managed-by=argocd

@@ -1,7 +1,7 @@
 ingressRoute:
   dashboard:
     enabled: true
-    matchRule: Host(`traefik.localhost`)
+    matchRule: Host(`traefik.n8n.local.bitovi-ai.com`)
     entryPoints:
       - web
 providers:
