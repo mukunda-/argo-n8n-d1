@@ -1,0 +1,25 @@
+# This will include all applications to install everything. The apps can also be installed
+# individually.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/mukunda-/argo-n8n-d1
+      path: apps
+      targetRevision: HEAD
+      directory:
+        recurse: true
+        include: '{common/*/app.yaml}'
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

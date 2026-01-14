@@ -1,8 +1,8 @@
 # Makefile for Argo CD Project
 
-.PHONY: install-argo get-argo-password delete-argo-password argo-forward 
-.PHONY: install-argo-cli argo-cli-login argo-sync
-.PHONY: create-argo-apps connect-pg n8n-forward
+.PHONY: fresh install-argo get-argo-password delete-argo-password argo-forward
+.PHONY: install-argo-cli argo-cli-login argo-cli-login-core argo-sync
+.PHONY: create-argo-apps-for-local create-argo-root-app connect-pg n8n-forward
 
 fresh:
 	./fresh.sh
@@ -49,6 +49,9 @@ argo-sync:
 
 create-argo-apps-for-local:
 	argocd app create root-app --file ./root-app-local.yaml
+
+create-argo-root-app:
+	argocd app create root-app --file ./root-app.yaml
 
 connect-pg:
 	./connect-pg.sh

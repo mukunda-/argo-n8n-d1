@@ -57,7 +57,7 @@ module "eks" {
     coredns            = {}
     kube-proxy         = {}
     vpc-cni            = {}
-    aws-ebs-csi-driver = {}
+    #aws-ebs-csi-driver = {}
   }
 
   # Managed node group: 3 nodes across 3 AZ subnets
