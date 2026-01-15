@@ -7,7 +7,7 @@ variable "region" {
 # resources.
 variable "cluster_name" {
   type    = string
-  default = "k8s-n8n"
+  default = "n8n-cluster"
 }
 
 variable "kubernetes_version" {

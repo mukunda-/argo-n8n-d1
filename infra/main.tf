@@ -4,7 +4,7 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  azs = slice(sort(data.aws_availability_zones.available.names), 0, 3)
+  azs = slice(data.aws_availability_zones.available.names, 0, 3)
 }
 
 module "vpc" {
@@ -52,35 +52,23 @@ module "eks" {
   cluster_endpoint_public_access  = true
   cluster_endpoint_private_access = true
 
-  # EKS-managed add-ons (good default)
-  cluster_addons = {
-    coredns            = {}
-    kube-proxy         = {}
-    vpc-cni            = {}
-    #aws-ebs-csi-driver = {}
+  # Set Standard Support (14 months) instead of Extended Support (26 months)
+  cluster_upgrade_policy = {
+    support_type = "STANDARD"
   }
 
-  # Managed node group: 3 nodes across 3 AZ subnets
-  eks_managed_node_groups = {
-    main = {
-      name = "main"
-
-      instance_types = [var.node_instance_type]
-      capacity_type  = "ON_DEMAND"
-
-      min_size     = 3
-      max_size     = 3
-      desired_size = 3
-
-      disk_size = 30
-
-      # Optional: make node updates less disruptive
-      update_config = {
-        max_unavailable = 1
-      }
-    }
+  # Enable EKS Auto Mode without built-in node pools
+  # All workloads including system components will use custom node pools
+  bootstrap_self_managed_addons = false
+  cluster_compute_config = {
+    enabled    = true
+    node_pools = []
   }
 
+  # No need for node groups. EKS Auto Mode handles node provisioning
+
+  # Grant cluster admin access to specified role
+  enable_cluster_creator_admin_permissions = true
   tags = {
     Project = var.cluster_name
   }

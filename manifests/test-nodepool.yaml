@@ -1,0 +1,44 @@
+# This nodepool will create smaller nodes for running test workloads.
+---
+apiVersion: eks.amazonaws.com/v1
+kind: NodePool
+metadata:
+  name: test
+spec:
+  # Use smaller t3a.medium instances for cost-effective testing
+  instanceTypes:
+    - t3a.medium
+  
+  # Allow deploying across all 3 availability zones
+  availabilityZoneIds:
+    - use1-az1
+    - use1-az2
+    - use1-az3
+  
+  # Configure scaling based on workload demands. This testing will use 3 nodes minimum.
+  scaling:
+    minSize: 3
+    maxSize: 10
+  
+  # Labels to help target workloads to this node pool
+  labels:
+    workload-type: test
+    node-pool: test
+    compute-size: small
+  
+  # Taints to ensure only intended workloads run here (optional)
+  # Uncomment if you want to ensure only pods with matching tolerations use these nodes
+  # taints:
+  #   - key: workload-type
+  #     value: test
+  #     effect: NoSchedule
+  
+  # Cost optimization tags
+  tags:
+    - key: Environment
+      value: test
+    - key: InstanceType
+      value: t3a.medium
+    - key: ManagedBy
+      value: eks-auto-mode
+
