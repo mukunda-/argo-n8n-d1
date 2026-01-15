@@ -53,6 +53,7 @@ module "eks" {
   cluster_endpoint_private_access = true
 
   # Set Standard Support (14 months) instead of Extended Support (26 months)
+  # Extended support has a hefty control plane fee.
   cluster_upgrade_policy = {
     support_type = "STANDARD"
   }
