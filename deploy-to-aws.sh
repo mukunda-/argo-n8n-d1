@@ -18,7 +18,8 @@ read -p "Going to update kubeconfig with eks clusterGoing to update the kubeconf
 read -p "Press Enter to continue..."
 
 # Configure kubectl with the current cluster.
-eksctl utils write-kubeconfig --cluster=$CLUSTER_NAME --region=$CLUSTER_REGION
+#eksctl utils write-kubeconfig --cluster=$CLUSTER_NAME --region=$CLUSTER_REGION
+aws eks --region $CLUSTER_REGION update-kubeconfig --name $CLUSTER_NAME
 
 # Generate passwords.
 ./gen-secrets.sh
