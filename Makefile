@@ -50,8 +50,8 @@ argo-sync:
 create-argo-apps-for-local:
 	argocd app create root-app --file ./root-app-local.yaml
 
-create-argo-root-app:
-	argocd app create root-app --file ./root-app.yaml
+create-argo-root-app-aws:
+	argocd app create root-app --file ./root-app-aws.yaml
 
 connect-pg:
 	./connect-pg.sh

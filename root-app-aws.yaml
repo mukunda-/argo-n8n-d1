@@ -13,7 +13,7 @@ spec:
       targetRevision: HEAD
       directory:
         recurse: true
-        include: '{common/*/app.yaml}'
+        include: '{common/*/app.yaml,aws/*/app.yaml}'
 
   destination:
     server: https://kubernetes.default.svc
