@@ -1,4 +1,5 @@
 #!/bin/bash
+# Connects to the cloudnative-pg postgres database.
 
 # Open port and give a moment for it to open.
 kubectl port-forward svc/cnpg-cluster-rw -n cnpg 8102:5432 &

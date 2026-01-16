@@ -90,12 +90,6 @@ main:
     QUEUE_BULL_REDIS_PORT:
       value: "6379"
 
-  # Persistence
-  persistence:
-    enabled: true
-    type: dynamic
-    size: 1Gi
-
 worker:
   enabled: true
   # Service configuration
