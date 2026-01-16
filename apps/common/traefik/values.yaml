@@ -4,7 +4,7 @@ ingressRoute:
     matchRule: Host(`n8n-traefik.bitovi-ai.com`)
     entryPoints:
       - web
- service:
+service:
   enabled: true
   type: LoadBalancer
   annotations:
