@@ -19,6 +19,10 @@ spec:
         - $home/apps/common/n8n/values.yaml
   - repoURL: https://github.com/mukunda-/argo-n8n-d1
     ref: home
+  - repoURL: https://github.com/mukunda-/argo-n8n-d1
+    targetRevision: HEAD
+    path: apps/common/n8n/manifests
+    
     
   destination:
     server: https://kubernetes.default.svc
