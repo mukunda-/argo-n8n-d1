@@ -26,18 +26,17 @@ module "vpc" {
   enable_dns_support   = true
 
   # These tags are important so EKS can create LoadBalancers
-  public_subnet_tags = {
-    "kubernetes.io/role/elb" = "1"
-  }
-
+  # Run ELB on 2 subnets only.
   public_subnet_tags_per_az = {
-    "${local.azs[0]}" = { "subnet-index" = "1" }
-    "${local.azs[1]}" = { "subnet-index" = "2" }
-    "${local.azs[2]}" = { "subnet-index" = "3" }
+    "${local.azs[0]}" = { "kubernetes.io/role/elb" = "1" }
+    "${local.azs[1]}" = { "kubernetes.io/role/elb" = "1" }
+    "${local.azs[2]}" = { "kubernetes.io/role/elb" = "0" }
   }
 
-  private_subnet_tags = {
-    "kubernetes.io/role/internal-elb" = "1"
+  private_subnet_tags_per_az = {
+    "${local.azs[0]}" = { "kubernetes.io/role/internal-elb" = "1" }
+    "${local.azs[1]}" = { "kubernetes.io/role/internal-elb" = "1" }
+    "${local.azs[2]}" = { "kubernetes.io/role/internal-elb" = "0" }
   }
 
   tags = {

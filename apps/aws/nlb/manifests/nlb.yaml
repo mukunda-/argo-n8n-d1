@@ -7,8 +7,6 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
     # Optional: Enable health check
     service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
-    # Set up 2 nodes. Default would be 3.
-    service.beta.kubernetes.io/aws-load-balancer-subnets: "subnet-index=1,subnet-index=2"
 spec:
   selector:
     app: traefik
