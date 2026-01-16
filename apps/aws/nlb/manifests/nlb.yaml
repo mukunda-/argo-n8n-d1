@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aws-nlb
+  annotations:
+    # Specify the load balancer scheme as internet-facing (public) or internal
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    # Optional: Enable health check
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+    # Set up 2 nodes. Default would be 3.
+    service.beta.kubernetes.io/aws-load-balancer-subnets: "subnet-index=1,subnet-index=2"
+spec:
+  selector:
+    app: traefik
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  - protocol: TCP
+    port: 443
+    targetPort: 443
+  type: LoadBalancer
+  # For clusters with Auto Mode enabled, this field can be omitted as it's the default controller
+  loadBalancerClass: eks.amazonaws.com/nlb

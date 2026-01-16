@@ -1,19 +1,18 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
-  name: n8n-ingress
+  name: n8n-route
 spec:
-  # this matches the name of IngressClass.
-  # this can be omitted if you have a default ingressClass in cluster: the one with ingressclass.kubernetes.io/is-default-class: "true"  annotation
-  ingressClassName: alb
+  parentRefs:
+  - name: traefik-gateway
+    namespace: traefik
+  hostnames:
+  - "n8n-test.bitovi-ai.com"
   rules:
-    - host: n8n-test.bitovi-ai.com
-      http:
-        paths:
-          - path: /*
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: n8n
-                port:
-                  number: 80
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: n8n
+      port: 80
