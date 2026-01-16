@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: n8n-ingress
+spec:
+  # this matches the name of IngressClass.
+  # this can be omitted if you have a default ingressClass in cluster: the one with ingressclass.kubernetes.io/is-default-class: "true"  annotation
+  ingressClassName: alb
+  rules:
+    - host: n8n-test.bitovi-ai.com
+      http:
+        paths:
+          - path: /*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: n8n
+                port:
+                  number: 5678
