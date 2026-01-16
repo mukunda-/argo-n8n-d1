@@ -27,6 +27,11 @@ main:
         secretKeyRef:
           name: n8n-db-password
           key: password
+    N8N_ENCRYPTION_KEY:
+      valueFrom:
+        secretKeyRef:
+          name: n8n-encryption-key
+          key: password
     GENERIC_TIMEZONE:
       value: "America/Chicago"
 
@@ -105,6 +110,11 @@ worker:
       valueFrom:
         secretKeyRef:
           name: n8n-db-password
+          key: password
+    N8N_ENCRYPTION_KEY:
+      valueFrom:
+        secretKeyRef:
+          name: n8n-encryption-key
           key: password
     GENERIC_TIMEZONE:
       value: "America/Chicago"

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 n8n_db_password=$(openssl rand -hex 32)
+n8n_encryption_key=$(openssl rand -hex 32)
 
 if ! kubectl get namespace cnpg &>/dev/null; then
     kubectl create namespace cnpg || true
@@ -20,6 +21,8 @@ kubectl create secret generic -n n8n n8n-db-password \
     --type=kubernetes.io/basic-auth \
     --from-literal=username=n8n \
     --from-literal=password=$n8n_db_password
+kubectl create secret generic -n n8n n8n-encryption-key \
+    --from-literal=password=$n8n_encryption_key
 
 redis_password=$(openssl rand -hex 32)
 
