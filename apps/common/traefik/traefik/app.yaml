@@ -16,7 +16,7 @@ spec:
     helm:
       releaseName: traefik
       valueFiles:
-        - $home/apps/minikube/traefik/values.yaml
+        - $home/apps/common/traefik/values.yaml
   - repoURL: https://github.com/mukunda-/argo-n8n-d1
     ref: home
     
