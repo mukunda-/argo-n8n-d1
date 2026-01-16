@@ -33,7 +33,7 @@ make install-argo
 echo "Going to install argo root app"
 read -p "Press Enter to continue..."
 
-make create-argo-root-app
+make create-argo-root-app-aws
 
 # Bootstrap: Deploy the load balancer controller. We can't deploy this with argocd because
 # the argocd CLI can't install anything until the ingress is started.
