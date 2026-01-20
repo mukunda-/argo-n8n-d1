@@ -6,6 +6,7 @@ spec:
   parentRefs:
   - name: traefik-gateway
     namespace: traefik
+    sectionName: websecure
   hostnames:
   - "n8n-test.bitovi-ai.com"
   rules:

@@ -1,0 +1,13 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: n8n-test-bitovi-ai-com-tls
+  namespace: traefik
+spec:
+  secretName: n8n-test-bitovi-ai-com-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - n8n-test.bitovi-ai.com

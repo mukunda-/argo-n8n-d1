@@ -19,6 +19,9 @@ spec:
         - $home/apps/common/traefik/values.yaml
   - repoURL: https://github.com/mukunda-/argo-n8n-d1
     ref: home
+  - repoURL: https://github.com/mukunda-/argo-n8n-d1
+    path: apps/common/traefik/manifests
+
     
   destination:
     server: https://kubernetes.default.svc
