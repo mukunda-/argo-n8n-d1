@@ -17,5 +17,18 @@ providers:
 gateway:
   listeners:
     web:
+      port: 80
+      protocol: HTTP
       namespacePolicy:
         from: All
+    # websecure:
+    #   port: 443
+    #   protocol: HTTPS
+    #   namespacePolicy:
+    #     from: All
+    #   mode: Terminate
+    #   certificateRefs:
+    #     - kind: Secret
+    #     #how to auto with cert-manager?
+    #       name: local-selfsigned-tls
+    #       group: ""
