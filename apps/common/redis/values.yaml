@@ -4,6 +4,9 @@ auth:
 sentinel:
   enabled: true
   masterSet: "mymaster"
+  image:
+    repository: bitnamilegacy/redis-sentinel
+    tag: 7.2.4-debian-12-r9
 master:
   persistence:
     enabled: true
