@@ -18,8 +18,8 @@ replica:
     size: 2Gi # [CONFIG] size accordingly
   topologySpreadConstraints:
     - maxSkew: 1
-      topologyKey: node
-      whenUnsatisfiable: DoNotSchedule
+      topologyKey: topology.kubernetes.io/zone
+      whenUnsatisfiable: ScheduleAnyway
 image:
   repository: bitnamilegacy/redis
   tag: 7.2.4-debian-12-r9
