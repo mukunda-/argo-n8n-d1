@@ -31,3 +31,19 @@ gateway:
         - kind: Secret
           name: n8n-test-bitovi-ai-com-tls
           group: ""
+
+ports:
+  # Defines the HTTP entry point named 'web'
+  web:
+    port: 80
+    nodePort: 30000
+    # Instructs this entry point to redirect all traffic to the 'websecure' entry point
+    redirections:
+      entryPoint:
+        to: websecure
+        scheme: https
+        permanent: false
+  # Defines the HTTPS entry point named 'websecure'
+  websecure:
+    port: 443
+    nodePort: 30001

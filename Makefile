@@ -43,6 +43,9 @@ argo-cli-login:
 argo-cli-login-core:
 	argocd login --core
 
+argo-cli-admin-dashboard:
+	argocd admin dashboard
+
 # Sync all applications
 argo-sync:
 	argocd app sync -l managed-by=argocd
