@@ -4,6 +4,18 @@ ingressRoute:
     matchRule: Host(`n8n-traefik.bitovi-ai.com`)
     entryPoints:
       - web
+
+# Spread across 2 AZs
+deployment:
+  replicas: 2
+topologySpreadConstraints:
+  - maxSkew: 1
+    topologyKey: topology.kubernetes.io/zone
+    whenUnsatisfiable: DoNotSchedule
+    labelSelector:
+      matchLabels:
+        app.kubernetes.io/name: traefik
+
 service:
   enabled: true
   type: LoadBalancer
@@ -11,9 +23,11 @@ service:
     service.beta.kubernetes.io/aws-load-balancer-type: "external"
     service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+
 providers:
   kubernetesGateway:
     enabled: true
+
 gateway:
   listeners:
     web:
