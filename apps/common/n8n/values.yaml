@@ -88,7 +88,7 @@ main:
     QUEUE_BULL_REDIS_HOST:
       value: "redis.redis.svc"
     QUEUE_BULL_REDIS_PORT:
-      value: "6379"
+      value: "26379" # Sentinel port
 
 worker:
   enabled: true
@@ -149,7 +149,7 @@ worker:
     QUEUE_BULL_REDIS_HOST:
       value: "redis.redis.svc"
     QUEUE_BULL_REDIS_PORT:
-      value: "6379"
+      value: "26379" # Sentinel port
     QUEUE_HEALTH_CHECK_ACTIVE:
       value: "true"
   

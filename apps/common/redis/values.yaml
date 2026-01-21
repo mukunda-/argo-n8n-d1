@@ -10,12 +10,16 @@ sentinel:
 master:
   persistence:
     enabled: true
-    size: 2Gi
+    size: 2Gi # [CONFIG] size accordingly
 replica:
   replicaCount: 2
   persistence:
     enabled: true
-    size: 2Gi
+    size: 2Gi # [CONFIG] size accordingly
+  topologySpreadConstraints:
+    - maxSkew: 1
+      topologyKey: node
+      whenUnsatisfiable: DoNotSchedule
 image:
   repository: bitnamilegacy/redis
   tag: 7.2.4-debian-12-r9
